@@ -109,7 +109,6 @@ namespace Task2
             {
                 Console.WriteLine($"{participant.FirstName} {participant.Points}");
             }
-            int a = 5;
         }
     }
 }
