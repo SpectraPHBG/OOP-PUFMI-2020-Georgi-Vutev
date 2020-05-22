@@ -85,7 +85,7 @@ namespace Task2
             }
             for (int i = 0; i < participants.Count; i++)
             {
-                for (int j = 0; j < participants.Count; j++)
+                for (int j = i+1; j < participants.Count; j++)
                 {
                     if (i == j)
                     {
@@ -97,9 +97,18 @@ namespace Task2
                         {
                             participants[i].Points += 3;
                         }
-                        if ((participants[i].MyCar.AccelerationTo100 + participants[i].MyCar.AccelerationFrom100To200) < (participants[j].MyCar.AccelerationTo100 + participants[j].MyCar.AccelerationFrom100To200))
+                        else
+                        {
+                            participants[j].Points += 3;
+
+                        }
+                        if ((participants[i].MyCar.AccelerationTo100 < participants[j].MyCar.AccelerationTo100) && (participants[i].MyCar.AccelerationFrom100To200 < participants[j].MyCar.AccelerationFrom100To200))
                         {
                             participants[i].Points += 3;
+                        }
+                        else
+                        {
+                            participants[j].Points += 3;
                         }
                     }
 
