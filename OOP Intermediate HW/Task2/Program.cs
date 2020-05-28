@@ -20,21 +20,21 @@ namespace Task2
                 {
                     if (value == 100)
                     {
-                        AccelerationTo100 = 1000 / (2 * HorsePower);
+                        AccelerationTo100 = (1/HorsePower)*1000/2;
                         AccelerationTo100 = AccelerationTo100 - ((AccelerationTo100 * 30) / 100);
-                        AccelerationFrom100To200 = 1000 / HorsePower;
+                        AccelerationFrom100To200 = (1 / HorsePower) * 1000;
 
                     }
                     else if (value == 200)
                     {
-                        AccelerationTo100 = 1000 / (2 * HorsePower);
-                        AccelerationFrom100To200 = 1000 / HorsePower;
+                        AccelerationTo100 = (1 / HorsePower) * 1000 / 2;
+                        AccelerationFrom100To200 = (1 / HorsePower) * 1000;
                         AccelerationFrom100To200 = AccelerationFrom100To200 - ((AccelerationFrom100To200 * 20) / 100);
                     }
                     else
                     {
-                        AccelerationTo100 = 1000 / (2 * HorsePower);
-                        AccelerationFrom100To200 = 1000 / HorsePower;
+                        AccelerationTo100 = (1 / HorsePower) * 1000 / 2;
+                        AccelerationFrom100To200 = (1 / HorsePower) * 1000;
                     }
                     AccelerationTo100 = Math.Round(AccelerationTo100, 2);
                     AccelerationFrom100To200 = Math.Round(AccelerationFrom100To200, 2);
@@ -87,12 +87,6 @@ namespace Task2
             {
                 for (int j = i+1; j < participants.Count; j++)
                 {
-                    if (i == j)
-                    {
-                        continue;
-                    }
-                    else
-                    {
                         if (participants[i].MyCar.AccelerationTo100 < participants[j].MyCar.AccelerationTo100)
                         {
                             participants[i].Points += 3;
@@ -102,7 +96,7 @@ namespace Task2
                             participants[j].Points += 3;
 
                         }
-                        if ((participants[i].MyCar.AccelerationTo100 < participants[j].MyCar.AccelerationTo100) && (participants[i].MyCar.AccelerationFrom100To200 < participants[j].MyCar.AccelerationFrom100To200))
+                        if ((participants[i].MyCar.AccelerationTo100 + participants[i].MyCar.AccelerationFrom100To200) < (participants[j].MyCar.AccelerationTo100 + participants[j].MyCar.AccelerationFrom100To200))
                         {
                             participants[i].Points += 3;
                         }
@@ -110,7 +104,6 @@ namespace Task2
                         {
                             participants[j].Points += 3;
                         }
-                    }
 
                 }
             }
